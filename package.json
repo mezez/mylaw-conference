@@ -2,7 +2,10 @@
   "name": "my_law_conference",
   "version": "1.0.0",
   "description": "a rest api for my law conference",
-  "main": "index.js",
+  "main": "app.js",
+  "engines": {
+    "node": "10.15.1"
+  },
   "scripts": {
     "test": "jest --watchAll --verbose --coverage",
     "start": "nodemon app.js"
