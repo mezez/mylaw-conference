@@ -34,7 +34,7 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD
     //mongoose.connect('mongodb://localhost/talk', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
 
-        const server = app.listen(8080);
+        const server = app.listen(process.env.PORT || 3000);
 
         //socketio connection
         const io = require('./socket').init(server);
