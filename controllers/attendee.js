@@ -47,7 +47,7 @@ exports.addAttendee = async (req, res, next) => {
 
     try {
         await attendee.save();
-        io.getIO().emit('attendee', { action: 'create', attendee: attendee });
+        io.getIO().emit('attendee', { action: 'createAttendee', attendee: attendee });
         res.status(201).json({
             message: "Attendee created successfully",
             attendee: attendee
