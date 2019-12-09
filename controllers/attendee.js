@@ -82,7 +82,7 @@ exports.addAttendeeToTalk = async (req, res, next) => {
 
         //attendee has been addes to talk?
         const result = talk.attendees.filter(attendee => {
-            return attendee._id === attendeeId;
+            return attendee._id.toString() === attendeeId.toString();
         });
 
         if (result && result.length > 0) {
