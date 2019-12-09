@@ -80,28 +80,28 @@ exports.addAttendeeToTalk = async (req, res, next) => {
             throw error;
         }
 
-        //attendee has been addes to talk?
-        const result = talk.attendees.filter(attendee => {
-            return attendee._id === attendeeId;
+        // //attendee has been addes to talk?
+        // const result = talk.attendees.filter(attendee => {
+        //     return attendee._id === attendeeId;
+        // });
+
+        // if (result) {
+        //     res.status(201).json({
+        //         message: "Attendee already added to Talk"
+        //     });
+        // } else {
+
+        //do the add
+        attendee.talks.push(talk);
+        talk.attendees.push(attendee);
+
+        await attendee.save();
+        await talk.save();
+
+        res.status(201).json({
+            message: "Attendee successully added to Talk"
         });
-
-        if (result) {
-            res.status(201).json({
-                message: "Attendee already added to Talk"
-            });
-        } else {
-
-            //do the add
-            attendee.talks.push(talk);
-            talk.attendees.push(attendee);
-
-            await attendee.save();
-            await talk.save();
-
-            res.status(201).json({
-                message: "Attendee successully added to Talk"
-            });
-        }
+        // }
 
     } catch (err) {
         if (!err.statusCode) {
